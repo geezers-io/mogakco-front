@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
+    "lint-staged": "lint-staged",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -10,6 +12,18 @@
     "test": "ts-jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --parser flow --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser babel-ts --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -39,6 +53,8 @@
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.5.12",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
     "ts-jest": "^28.0.3",
     "typescript": "4.7.2"
