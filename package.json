@@ -4,26 +4,24 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "lint-staged": "lint-staged",
+    "lint:staged": "lint-staged",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "ts-jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build:storybook": "build-storybook",
     "clean": "rimraf node_modules"
   },
   "lint-staged": {
     "*.{js,jsx}": [
       "eslint --fix",
-      "prettier --parser flow --write",
-      "git add"
+      "prettier --parser flow --write"
     ],
     "*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --parser babel-ts --write",
-      "git add"
+      "prettier --parser babel-ts --write"
     ]
   },
   "dependencies": {
