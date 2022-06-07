@@ -1,0 +1,9 @@
+version: '3'
+services:
+  next:
+    image: 'jeidiiy/$IMAGE:$TAG'
+    container_name: mogakco-front
+    build:
+      context: .
+    ports:
+      - 3000:3000
