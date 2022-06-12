@@ -17,6 +17,16 @@
     "build:storybook": "build-storybook",
     "clean": "rimraf node_modules"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geezers-io/mogakco-front.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Geezers <devgeezers@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/geezers-io/mogakco-front/issues"
+  },
+  "homepage": "https://github.com/geezers-io/mogakco-front#README",
   "lint-staged": {
     "*.{js,jsx}": [
       "eslint --fix",
