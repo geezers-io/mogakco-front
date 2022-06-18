@@ -1,5 +1,27 @@
-import { Theme } from '@emotion/react';
-
-export const theme: Theme = {
-  colors: {},
-};
+export const theme = {
+  palette: {
+    BLACK_0: '#000000',
+    BLACK_1: '#010409',
+    WHITE_0: '#ffffff',
+    WHITE_1: '#fefefe',
+    GRAY_0: '#f0f6fc',
+    GRAY_1: '#c9d1d9',
+    GRAY_2: '#b1bac4',
+    GRAY_3: '#8b949e',
+    GRAY_4: '#6e7681',
+    GRAY_5: '#484f58',
+    GRAY_6: '#30363d',
+    GRAY_7: '#21262d',
+    GRAY_8: '#161b22',
+    GRAY_9: '#0d1117',
+    RED_0: '#a07575',
+    RED_1: '#f23f31',
+    YELLOW_0: '#ffd500',
+    YELLOW_1: '#fdc500',
+    YELLOW_2: '#fbb500',
+    GREEN_0: '#e0e0de',
+    BLUE_0: '#00509d',
+    BLUE_1: '#003f88',
+    BLUE_2: '#00296b',
+  },
+} as const;
