@@ -6,7 +6,7 @@ const Home: NextPage = () => {
 };
 
 const TestParagraph = styled.p<{ color: string }>`
-  color: ${(p) => p.color};
+  color: ${(p) => p.theme.palette.BLUE_0};
 `;
 
 export default Home;
