@@ -3,7 +3,7 @@ import { isUnauthorizeError } from 'utils/error';
 import { PublicRoute, Redirect } from 'common';
 import { UserService } from 'providers';
 
-const SESSION_COOKIE_NAME = 'session';
+const SESSION_COOKIE_NAME = 'JSESSIONID';
 
 // Redirect by cookie session exist
 export async function middleware(req: NextRequest) {
