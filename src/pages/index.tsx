@@ -1,12 +1,29 @@
 import type { NextPage } from 'next';
-import styled from '@emotion/styled';
+import Link from 'next/link';
+import { useCallback } from 'react';
 
-const Home: NextPage = () => {
-  return <TestParagraph color="red">Hello World!</TestParagraph>;
+const openLoginModal = () => {
+  alert('open login modal'); // temp
 };
 
-const TestParagraph = styled.p<{ color: string }>`
-  color: ${(p) => p.theme.palette.BLUE_0};
-`;
+const Home: NextPage = () => {
+  const handleLoginButtonClick = useCallback(() => {
+    openLoginModal();
+  }, []);
+
+  return (
+    <div>
+      <h1>Home page</h1>
+
+      <button onClick={handleLoginButtonClick}>로그인</button>
+
+      <Link href="/join">
+        <a>
+          <button>회원가입</button>
+        </a>
+      </Link>
+    </div>
+  );
+};
 
 export default Home;
