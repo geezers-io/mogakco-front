@@ -19,7 +19,7 @@ export interface LoginResponse {
 }
 
 export interface UserServiceClient {
-  me(): Promise<Me>;
+  me(): Promise<Empty>;
 
   join(request: JoinRequest): Promise<JoinResponse>;
 

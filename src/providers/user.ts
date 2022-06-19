@@ -1,9 +1,9 @@
 import { api } from 'providers/common/axios';
-import { UserServiceClient, LoginResponse, JoinResponse, Empty, Me } from 'providers/@types';
+import { UserServiceClient, LoginResponse, JoinResponse, Empty } from 'providers/@types';
 
 export const UserService: UserServiceClient = {
   async me() {
-    const { data } = await api.post<Me>('/api/v1/me');
+    const { data } = await api.get<Empty>('/api/v1/users/authentication');
 
     return data;
   },
