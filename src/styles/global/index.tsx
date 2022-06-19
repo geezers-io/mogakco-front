@@ -13,9 +13,7 @@ export const globalCSS = css`
 
   html,
   body,
-  body > div:first-of-type,
-  div#__next,
-  div#__next > div {
+  div#__next {
     min-height: 100vh;
   }
 
@@ -48,6 +46,12 @@ export const globalCSS = css`
   body {
     // TODO: 폰트 렌더링 최적화하기
     font-family: 'Noto Sans KR', 'Roboto', 'HelveticaNeue', 'Helvetica Neue', sans-serif;
+  }
+
+  div#__next {
+    // FIXME: Temp
+    display: grid;
+    place-content: center;
   }
 `;
 
