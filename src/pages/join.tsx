@@ -1,7 +1,12 @@
 import { NextPage } from 'next';
+import JoinForm from 'components/JoinForm';
 
 const Join: NextPage = () => {
-  return <h1>Join page</h1>;
+  return (
+    <div>
+      <JoinForm />
+    </div>
+  );
 };
 
 export default Join;

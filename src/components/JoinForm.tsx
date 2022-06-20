@@ -1,13 +1,13 @@
 import React, { FormEventHandler, useCallback } from 'react';
-import { useRouter } from 'next/router';
-import { LoginRequest } from 'providers/@types';
-import { UserService } from 'providers';
 import { showError } from 'utils/error';
+import { JoinRequest } from 'providers/@types';
+import { UserService } from 'providers';
+import { useRouter } from 'next/router';
 import { useMe } from 'stores';
 import { Enum } from 'common';
 import RouteRoot = Enum.RouteRoot;
 
-const LoginForm: React.FC = () => {
+const JoinForm: React.FC = () => {
   const updateMe = useMe((state) => state.updateMe);
   const router = useRouter();
 
@@ -18,13 +18,11 @@ const LoginForm: React.FC = () => {
       try {
         const form = e.target as HTMLFormElement;
         const body = Array.from(form.querySelectorAll('input')).reduce((acc, input) => {
-          acc[input.name as keyof LoginRequest] = input.value;
+          acc[input.name as keyof JoinRequest] = input.value;
           return acc;
-        }, {} as LoginRequest);
+        }, {} as JoinRequest);
 
-        console.log('body', body);
-
-        const { me } = await UserService.login(body);
+        const { me } = await UserService.join(body);
         updateMe(me);
 
         await router.replace(RouteRoot.SERVICE);
@@ -37,7 +35,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <div>
-      <h1>로그인</h1>
+      <h1>회원가입</h1>
 
       <br />
 
@@ -59,4 +57,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default JoinForm;

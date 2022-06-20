@@ -1,13 +1,19 @@
-export enum ErrorCode {
-  UNAUTHORIZED = 401,
-}
+export namespace Enum {
+  export enum ErrorCode {
+    UNAUTHORIZED = 401,
+  }
 
-export enum Redirect {
-  HOME = '/',
-  SERVICE = '/service',
-}
+  export enum Redirect {
+    HOME = '/',
+    SERVICE = '/service',
+  }
 
-export enum PublicRoute {
-  HOME = '/',
-  JOIN = '/join',
+  export enum RouteRoot {
+    HOME = '/',
+    JOIN = '/join',
+    SERVICE = '/service',
+    PROXY = '/proxy',
+    FONT = '/fonts',
+    SVG = '/svg',
+  }
 }

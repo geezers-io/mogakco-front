@@ -19,7 +19,9 @@ export interface LoginResponse {
 }
 
 export interface UserServiceClient {
-  me(): Promise<Empty>;
+  authenticate(): Promise<Empty>;
+
+  authenticateWithFetch(): Promise<Empty>;
 
   join(request: JoinRequest): Promise<JoinResponse>;
 

@@ -1,22 +1,26 @@
 import { NextPage } from 'next';
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
+import { useTrackedMe } from 'stores';
 import { UserService } from 'providers';
-import { useMe } from 'stores';
+import { useRouter } from 'next/router';
+import { Enum } from 'common';
+import RouteRoot = Enum.RouteRoot;
 
 const Service: NextPage = () => {
-  const meId = useMe((state) => state.id);
-  const updateMe = useMe((state) => state.updateMe);
+  const me = useTrackedMe();
+  const router = useRouter();
 
-  useEffect(() => {
-    (async () => {
-      updateMe(await UserService.me());
-    })();
-  });
+  const logout = useCallback(async () => {
+    await UserService.logout();
+    await router.push(RouteRoot.HOME);
+  }, [router]);
 
   return (
     <div>
       <h1>Service page</h1>
-      <p>My Id: {meId ?? 'not fetched'}</p>
+      <p>My id: {me.id ?? 'not fetched'}</p>
+      <p>My email: {me.email ?? 'not fetched'}</p>
+      <button onClick={logout}>로그아웃</button>
     </div>
   );
 };
