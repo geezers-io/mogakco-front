@@ -2,8 +2,8 @@ import axios from 'axios';
 import { isWindow } from 'utils/global';
 import Router from 'next/router';
 import { isUnauthorizeError } from 'utils/error';
-import { Enum } from 'common';
-import RouteRoot = Enum.RouteRoot;
+import { Enums } from 'common';
+import RouteRoot = Enums.RouteRoot;
 
 export const api = axios.create({
   baseURL: RouteRoot.PROXY,

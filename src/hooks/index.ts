@@ -1,2 +1,2 @@
-export * from './useAuthorization';
 export * from './useDidMount';
+export * from './useDidMountEffect';

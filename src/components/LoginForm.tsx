@@ -4,8 +4,8 @@ import { LoginRequest } from 'providers/@types';
 import { UserService } from 'providers';
 import { showError } from 'utils/error';
 import { useMe } from 'stores';
-import { Enum } from 'common';
-import RouteRoot = Enum.RouteRoot;
+import { Enums } from 'common';
+import RouteRoot = Enums.RouteRoot;
 
 const LoginForm: React.FC = () => {
   const updateMe = useMe((state) => state.updateMe);

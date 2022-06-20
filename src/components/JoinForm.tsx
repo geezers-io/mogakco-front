@@ -4,8 +4,8 @@ import { JoinRequest } from 'providers/@types';
 import { UserService } from 'providers';
 import { useRouter } from 'next/router';
 import { useMe } from 'stores';
-import { Enum } from 'common';
-import RouteRoot = Enum.RouteRoot;
+import { Enums } from 'common';
+import RouteRoot = Enums.RouteRoot;
 
 const JoinForm: React.FC = () => {
   const updateMe = useMe((state) => state.updateMe);

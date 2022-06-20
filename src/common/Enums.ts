@@ -1,4 +1,4 @@
-export namespace Enum {
+export namespace Enums {
   export enum ErrorCode {
     UNAUTHORIZED = 401,
   }
