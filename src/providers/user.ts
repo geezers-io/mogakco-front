@@ -2,10 +2,15 @@ import { api } from 'providers/common/axios';
 import { UserServiceClient, LoginResponse, JoinResponse, Empty } from 'providers/@types';
 
 export const UserService: UserServiceClient = {
-  async me() {
+  async authenticate() {
     const { data } = await api.get<Empty>('/api/v1/users/authentication');
 
     return data;
+  },
+
+  async authenticateWithFetch() {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    return await fetch(API_URL + '/api/v1/users/authentication').then((res) => res.json());
   },
 
   async join(request) {

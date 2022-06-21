@@ -3,13 +3,12 @@ import { UserService } from 'providers';
 import { Enums, SESSION_KEY } from 'common';
 import RouteRoot = Enums.RouteRoot;
 
-// Redirect by cookie session exist on public route
+// Redirect by cookie session exist
 export async function middleware(req: NextRequest) {
   const url = req.nextUrl;
   console.log(`[Middleware]: Route ${url.pathname}`);
 
-  const publicRoutes: string[] = [RouteRoot.HOME, RouteRoot.JOIN];
-  if (!publicRoutes.includes(url.pathname)) {
+  if (url.pathname.startsWith(RouteRoot.PROXY)) {
     return NextResponse.next();
   }
 
@@ -19,15 +18,16 @@ export async function middleware(req: NextRequest) {
     try {
       await UserService.authenticateWithFetch();
       console.log('[Middleware]: authenticate success');
-      url.pathname = Enums.Redirect.SERVICE;
-      return NextResponse.redirect(url);
+      return NextResponse.next();
     } catch (e) {
       console.log('[Middleware]: authenticate failure');
       console.error(e);
-      return NextResponse.next();
+      url.pathname = Enums.Redirect.HOME;
+      return NextResponse.redirect(url);
     }
   }
 
   console.log('[Middleware]: no cookie');
-  return NextResponse.next();
+  url.pathname = Enums.Redirect.HOME;
+  return NextResponse.redirect(url);
 }

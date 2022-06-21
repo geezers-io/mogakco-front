@@ -2,14 +2,14 @@ import axios from 'axios';
 import { isWindow } from 'utils/global';
 import Router from 'next/router';
 import { isUnauthorizeError } from 'utils/error';
-
-const API_URL = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8081';
+import { Enums } from 'common';
+import RouteRoot = Enums.RouteRoot;
 
 export const api = axios.create({
-  baseURL: API_URL,
+  baseURL: RouteRoot.PROXY,
   withCredentials: true,
   headers: {
-    'Content-Type': 'application/json; charset=utf-8',
+    'Content-Type': 'application/json',
     Accept: 'application/json',
   },
 });
