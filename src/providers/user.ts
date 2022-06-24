@@ -10,7 +10,16 @@ export const UserService: UserServiceClient = {
 
   async authenticateWithFetch() {
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
-    return await fetch(API_URL + '/api/v1/users/authentication').then((res) => res.json());
+
+    try {
+      const res = await fetch(API_URL + '/api/v1/users/authentication');
+      const data = await res.json();
+      if (data.status && data.status >= 400) {
+        throw new Error(data);
+      }
+    } catch (e) {
+      throw e;
+    }
   },
 
   async join(request) {

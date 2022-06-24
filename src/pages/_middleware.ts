@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { UserService } from 'providers';
 import { Enums, SESSION_KEY } from 'common';
-import RouteRoot = Enums.RouteRoot;
+import Page = Enums.Page;
 
 // Redirect by cookie session exist on public route
 export async function middleware(req: NextRequest) {
   const url = req.nextUrl;
   console.log(`[Middleware]: Route ${url.pathname}`);
 
-  const publicRoutes: string[] = [RouteRoot.HOME, RouteRoot.JOIN];
+  const publicRoutes: string[] = [Page.HOME, Page.JOIN];
   if (!publicRoutes.includes(url.pathname)) {
     return NextResponse.next();
   }
@@ -21,9 +21,8 @@ export async function middleware(req: NextRequest) {
       console.log('[Middleware]: authenticate success');
       url.pathname = Enums.Redirect.SERVICE;
       return NextResponse.redirect(url);
-    } catch (e) {
+    } catch {
       console.log('[Middleware]: authenticate failure');
-      console.error(e);
       return NextResponse.next();
     }
   }

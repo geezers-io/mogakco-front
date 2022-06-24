@@ -5,7 +5,7 @@ import { UserService } from 'providers';
 import { showError } from 'utils/error';
 import { useMe } from 'stores';
 import { Enums } from 'common';
-import RouteRoot = Enums.RouteRoot;
+import Page = Enums.Page;
 
 const LoginForm: React.FC = () => {
   const updateMe = useMe((state) => state.updateMe);
@@ -27,7 +27,7 @@ const LoginForm: React.FC = () => {
         const { me } = await UserService.login(body);
         updateMe(me);
 
-        await router.replace(RouteRoot.SERVICE);
+        await router.replace(Page.SERVICE);
       } catch (e) {
         showError(e);
       }

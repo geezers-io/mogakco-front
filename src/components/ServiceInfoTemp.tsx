@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { UserService } from 'providers';
 import { useRouter } from 'next/router';
 import { Enums } from 'common';
-import RouteRoot = Enums.RouteRoot;
+import Page = Enums.RouteRoot;
 import { useMe } from 'stores';
 
 const ServiceInfoTemp: React.FC = () => {
@@ -12,7 +12,7 @@ const ServiceInfoTemp: React.FC = () => {
 
   const logout = useCallback(async () => {
     await UserService.logout();
-    await router.push(RouteRoot.HOME);
+    await router.push(Page.HOME);
   }, [router]);
 
   return (

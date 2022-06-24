@@ -19,3 +19,5 @@ export type OverloadedReturnType<T> = T extends {
   : T extends (...args: unknown[]) => infer R
   ? R
   : unknown;
+
+export type Valueof<T extends Record<string, unknown>> = T[keyof T];

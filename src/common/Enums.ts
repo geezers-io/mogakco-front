@@ -16,4 +16,10 @@ export namespace Enums {
     FONT = '/fonts',
     SVG = '/svg',
   }
+
+  export enum Page {
+    HOME = '/',
+    JOIN = '/join',
+    SERVICE = '/service',
+  }
 }
