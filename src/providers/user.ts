@@ -12,20 +12,16 @@ export const UserService: UserServiceClient = {
   async authenticateWithSSR(sessionValue) {
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-    try {
-      const res = await fetch(API_URL + '/api/v1/users/authentication', {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          Cookie: `${SESSION_KEY}=${sessionValue};`,
-        },
-      });
+    const res = await fetch(API_URL + '/api/v1/users/authentication', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        Cookie: `${SESSION_KEY}=${sessionValue};`,
+      },
+    });
 
-      if (res.status >= 400) {
-        throw new Error(`${res.status}`);
-      }
-    } catch (e) {
-      throw e;
+    if (res.status >= 400) {
+      throw new Error(`${res.status}`);
     }
   },
 
