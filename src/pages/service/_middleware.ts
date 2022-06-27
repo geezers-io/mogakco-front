@@ -12,11 +12,11 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const cookie = req.cookies[SESSION_KEY];
+  const sessionValue = req.cookies[SESSION_KEY];
 
-  if (cookie) {
+  if (sessionValue) {
     try {
-      await UserService.authenticateWithFetch();
+      await UserService.authenticateWithSSR(sessionValue);
       console.log('[Middleware]: authenticate success');
       return NextResponse.next();
     } catch (e) {

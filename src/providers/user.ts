@@ -1,5 +1,6 @@
 import { api } from 'providers/common/axios';
 import { UserServiceClient, LoginResponse, JoinResponse, Empty } from 'providers/@types';
+import { SESSION_KEY } from 'common';
 
 export const UserService: UserServiceClient = {
   async authenticate() {
@@ -8,9 +9,20 @@ export const UserService: UserServiceClient = {
     return data;
   },
 
-  async authenticateWithFetch() {
+  async authenticateWithSSR(sessionValue) {
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
-    return await fetch(API_URL + '/api/v1/users/authentication').then((res) => res.json());
+
+    const res = await fetch(API_URL + '/api/v1/users/authentication', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        Cookie: `${SESSION_KEY}=${sessionValue};`,
+      },
+    });
+
+    if (res.status >= 400) {
+      throw new Error(`${res.status}`);
+    }
   },
 
   async join(request) {
