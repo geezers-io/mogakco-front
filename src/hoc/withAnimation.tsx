@@ -1,7 +1,6 @@
 import React, { ComponentType, CSSProperties, PropsWithRef, RefObject } from 'react';
 import { CallbackType, observe } from 'utils/dom';
 import { css } from '@emotion/css';
-import { omit } from 'lodash';
 
 export type AnimationType = 'fadeIn';
 export type AnimationOptions = {
@@ -65,7 +64,7 @@ export function withAnimation<Props extends PropsWithRef<unknown>>(
     componentDidMount() {
       if (!this.componentRef.current) return;
 
-      this.io = observe(this.componentRef.current, omit(callback, 'whenUnObserve'), ioOptions);
+      this.io = observe(this.componentRef.current, callback, ioOptions);
     }
 
     componentWillUnmount() {
