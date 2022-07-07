@@ -19,7 +19,7 @@
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
     "incremental": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": "src"
   },
   "include": [
