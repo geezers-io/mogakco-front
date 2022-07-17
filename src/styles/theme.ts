@@ -96,4 +96,4 @@ export const theme = {
   btn_semantic_disabled_bg: palette.INK_10,
   btn_semantic_disabled_border: palette.INK_30,
   btn_semantic_disabled_color: palette.INK_50,
-};
+} as const;

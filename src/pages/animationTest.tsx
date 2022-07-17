@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import styled from '@emotion/styled';
 import { css, Theme } from '@emotion/react';
-import { withFadeIn } from 'hoc/withAnimation';
+import { withAnimation } from 'hoc';
 
 const TestPage: NextPage = () => {
   return (
@@ -23,7 +23,9 @@ const TestPage: NextPage = () => {
       <Space />
 
       <section style={{ display: 'flex', gap: '20px' }}>
-        <Box4 order={1}>BOX</Box4>
+        <Box4 order={1} className="test">
+          BOX
+        </Box4>
         <Box5 order={2}>BOX</Box5>
         <Box6 order={3}>BOX</Box6>
       </section>
@@ -35,6 +37,8 @@ const TestPage: NextPage = () => {
         <Box8 order={2}>BOX</Box8>
         <Box9 order={3}>BOX</Box9>
       </section>
+
+      <Box order={1} />
     </Container>
   );
 };
@@ -95,18 +99,22 @@ const Box = styled.div<BoxStyledProps>`
   border-radius: 5px;
 
   ${boxColorStyles};
+
+  &.test {
+    color: red;
+  }
 `;
 
-const Box1 = withFadeIn(Box, { origin: 'bottom' });
-const Box2 = withFadeIn(Box, { origin: 'left' });
-const Box3 = withFadeIn(Box, { origin: 'right' });
+const Box1 = withAnimation<BoxStyledProps>('fadeIn', Box, { origin: 'bottom' });
+const Box2 = withAnimation<BoxStyledProps>('fadeIn', Box, { origin: 'left' });
+const Box3 = withAnimation<BoxStyledProps>('fadeIn', Box, { origin: 'right' });
 
-const Box4 = withFadeIn(Box, { delay: 0 });
-const Box5 = withFadeIn(Box, { delay: 0.5 });
-const Box6 = withFadeIn(Box, { delay: 1 });
+const Box4 = withAnimation<BoxStyledProps>('fadeIn', Box, { delay: 0 });
+const Box5 = withAnimation<BoxStyledProps>('fadeIn', Box, { delay: 0.5 });
+const Box6 = withAnimation<BoxStyledProps>('fadeIn', Box, { delay: 1 });
 
-const Box7 = withFadeIn(Box, { origin: 'left', delay: 0 });
-const Box8 = withFadeIn(Box, { origin: 'left', delay: 0.5 });
-const Box9 = withFadeIn(Box, { origin: 'left', delay: 1 });
+const Box7 = withAnimation<BoxStyledProps>('fadeIn', Box, { origin: 'left', delay: 0 });
+const Box8 = withAnimation<BoxStyledProps>('fadeIn', Box, { origin: 'left', delay: 0.5 });
+const Box9 = withAnimation<BoxStyledProps>('fadeIn', Box, { origin: 'left', delay: 1 });
 
 export default TestPage;
