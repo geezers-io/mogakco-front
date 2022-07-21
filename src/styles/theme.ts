@@ -12,6 +12,7 @@ const palette = {
   INK_70: '#656C72',
   INK_80: '#545A60',
   INK_90: '#41474D',
+  INK_95: '#32373b',
   INK_100: '#222529',
 
   BLUE_5: '#F0F6FA',
@@ -49,7 +50,7 @@ export const theme = {
   primary_color_yellow: palette.YELLOW_70,
 
   txt_static: palette.INK_100,
-  txt_default: palette.INK_70,
+  txt_default: palette.INK_95,
   txt_hover: palette.INK_100,
   txt_active: palette.INK_100,
   txt_disabled: alpha(palette.INK_70, 0.5),
@@ -62,13 +63,13 @@ export const theme = {
 
   btn_primary_bg: palette.BLUE_90,
   btn_primary_border: palette.BLUE_90,
-  btn_primary_color: palette.INK_5,
+  btn_primary_color: palette.INK_10,
   btn_primary_hover_bg: palette.BLUE_50,
   btn_primary_hover_border: palette.BLUE_50,
-  btn_primary_hover_color: palette.INK_5,
+  btn_primary_hover_color: palette.INK_10,
   btn_primary_active_bg: palette.BLUE_90,
   btn_primary_active_border: palette.BLUE_90,
-  btn_primary_active_color: palette.INK_5,
+  btn_primary_active_color: palette.INK_10,
   btn_primary_disabled_bg: palette.INK_10,
   btn_primary_disabled_border: palette.INK_30,
   btn_primary_disabled_color: palette.INK_50,
@@ -88,7 +89,7 @@ export const theme = {
 
   btn_text_bg: 'transparent',
   btn_text_border: 'transparent',
-  btn_text_color: palette.INK_80,
+  btn_text_color: palette.INK_95,
   btn_text_hover_bg: 'transparent',
   btn_text_hover_border: 'transparent',
   btn_text_hover_color: palette.BLUE_70,
