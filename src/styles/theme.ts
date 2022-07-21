@@ -45,6 +45,21 @@ const palette = {
 export const theme = {
   palette,
 
+  primary_color_blue: palette.BLUE_90,
+  primary_color_yellow: palette.YELLOW_70,
+
+  txt_static: palette.INK_100,
+  txt_default: palette.INK_70,
+  txt_hover: palette.INK_100,
+  txt_active: palette.INK_100,
+  txt_disabled: alpha(palette.INK_70, 0.5),
+  txt_label: palette.INK_100,
+  txt_point: palette.BLUE_50,
+  txt_link: palette.BLUE_50,
+  txt_link_secondary: palette.INK_60,
+  txt_link_active: palette.BLUE_80,
+  txt_desc: palette.INK_50,
+
   btn_primary_bg: palette.BLUE_90,
   btn_primary_border: palette.BLUE_90,
   btn_primary_color: palette.INK_5,
@@ -96,4 +111,7 @@ export const theme = {
   btn_semantic_disabled_bg: palette.INK_10,
   btn_semantic_disabled_border: palette.INK_30,
   btn_semantic_disabled_color: palette.INK_50,
+
+  index_header_bg: palette.INK_10,
+  index_middle_block_subtitle_color: palette.INK_60,
 } as const;
