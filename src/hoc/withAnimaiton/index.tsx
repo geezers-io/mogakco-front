@@ -6,8 +6,8 @@ import { StyledComponent } from '@emotion/styled';
 import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 
 export function withAnimation<
+  Tag extends keyof JSX.IntrinsicElements = 'section',
   StyledProps extends Record<string, unknown> = {},
-  Tag extends keyof JSX.IntrinsicElements = 'div',
   StyledComp extends StyledComponent<StyledProps, JSX.IntrinsicElements[Tag]> = StyledComponent<
     StyledProps,
     JSX.IntrinsicElements[Tag]
