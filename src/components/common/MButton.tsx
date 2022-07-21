@@ -59,7 +59,6 @@ const MButton: MButtonType = ({
   active = false,
   disabled = false,
   loading = false,
-  className,
   forwardedRef,
   ...rest
 }) => {
@@ -93,9 +92,6 @@ const MButton: MButtonType = ({
     [disabled, loading, onClick]
   );
 
-  console.log('render');
-  console.log('className:', className);
-
   return (
     <StyledButton
       containerType={type}
@@ -105,7 +101,6 @@ const MButton: MButtonType = ({
       disabled={disabled || loading}
       onClick={handleClick}
       ref={forwardedRef}
-      className={className}
       {...rest}
     >
       {(icon || loading) && iconPlacement === 'left' && IconNode}
