@@ -20,7 +20,10 @@
     "jsxImportSource": "@emotion/react",
     "incremental": true,
     "rootDir": ".",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "public/*": ["../public/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
