@@ -188,16 +188,14 @@ const buttonColorStyles = ({
     border: 1px solid ${theme[`${defaultThemeType}_border` as keyof Theme]};
     color: ${theme[`${defaultThemeType}_color` as keyof Theme]};
 
-    ${
-      !active &&
-      css`
-        &:hover {
-          background: ${theme[`${hoverThemeType}_bg` as keyof Theme]};
-          border: 1px solid ${theme[`${hoverThemeType}_border` as keyof Theme]};
-          color: ${theme[`${hoverThemeType}_color` as keyof Theme]};
-        }
-      `
-    }
+    ${!active &&
+    css`
+      &:hover {
+        background: ${theme[`${hoverThemeType}_bg` as keyof Theme]};
+        border: 1px solid ${theme[`${hoverThemeType}_border` as keyof Theme]};
+        color: ${theme[`${hoverThemeType}_color` as keyof Theme]};
+      }
+    `}
     &:active {
       background: ${theme[`${activeThemeType}_bg` as keyof Theme]};
       border: 1px solid ${theme[`${activeThemeType}_border` as keyof Theme]};
@@ -208,7 +206,6 @@ const buttonColorStyles = ({
       border: 1px solid ${theme[`${disabledThemeType}_border` as keyof Theme]};
       color: ${theme[`${disabledThemeType}_color` as keyof Theme]};
     }
-  }
   `;
 };
 
