@@ -1,4 +1,4 @@
-import React, { Ref, SyntheticEvent } from 'react';
+import React, { Ref, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
@@ -18,10 +18,13 @@ interface Props {
 const LeftBlock = ({ title, content, imgPath, emailInputRef }: Props) => {
   const router = useRouter();
 
-  const toJoin = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    await router.push('/join');
-  };
+  const toJoin = useCallback(
+    async (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      await router.push('/join');
+    },
+    [router]
+  );
 
   return (
     <Container>
@@ -29,7 +32,7 @@ const LeftBlock = ({ title, content, imgPath, emailInputRef }: Props) => {
         <section>
           <h1>{title}</h1>
           <p>{content}</p>
-          <Form onSubmit={toJoin} spellCheck="false">
+          <EmailWrapper>
             <EmailInput
               ref={emailInputRef}
               type="email"
@@ -37,10 +40,8 @@ const LeftBlock = ({ title, content, imgPath, emailInputRef }: Props) => {
               spellCheck="false"
               required
             />
-            <JoinButton color="blue" htmlType="submit">
-              회원가입
-            </JoinButton>
-          </Form>
+            <JoinButton onClick={toJoin}>회원가입</JoinButton>
+          </EmailWrapper>
         </section>
       </ContentWrapper>
 
@@ -200,10 +201,10 @@ export const ImageWrapper = withAnimation(
   { origin: 'right' }
 );
 
-export const Form = styled.form`
+export const EmailWrapper = styled.div`
   width: 100%;
   max-width: 30rem;
-  height: 3rem;
+  height: 2.66rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -224,13 +225,13 @@ export const Form = styled.form`
 export const EmailInput = styled(Input)`
   flex: 1;
   padding: 0.66rem 0.33rem;
+  width: 100%;
+  height: 100%;
 `;
 
 export const JoinButton = styled(MButton)`
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
   margin-top: 0.33rem;
   padding: 1.33rem 2.33rem;
 

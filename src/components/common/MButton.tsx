@@ -51,7 +51,7 @@ export type MButtonType = React.FC<MButtonProps>;
 const MButton: MButtonType = ({
   children,
   onClick,
-  type = 'secondary',
+  type = 'primary',
   size = 'regular',
   icon = null,
   iconPlacement = 'left',

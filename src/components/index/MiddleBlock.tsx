@@ -17,7 +17,7 @@ const MiddleBlock = ({ subtitle, title, content, onClickButton }: Props) => (
       <h3>[ {subtitle} ]</h3>
       <h1>{title}</h1>
       <p>{content}</p>
-      <StartButton type="primary" size="large" onClick={onClickButton}>
+      <StartButton size="large" onClick={onClickButton}>
         시작하기
       </StartButton>
     </ContentWrapper>
@@ -44,13 +44,13 @@ const ContentWrapper = styled.section`
   h1 {
     margin-top: 1rem;
     font-weight: 700;
-    font-size: 2.1rem;
+    font-size: 2rem;
     word-break: keep-all;
     text-align: center;
   }
   h3 {
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     text-align: center;
     word-break: keep-all;
     color: ${({ theme }) => theme.txt_default};
@@ -80,7 +80,7 @@ const ContentWrapper = styled.section`
 `;
 
 const StartButton = styled(MButton)`
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 1.33rem 2.33rem;
 `;
 
