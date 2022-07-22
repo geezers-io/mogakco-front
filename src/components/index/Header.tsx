@@ -1,34 +1,29 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Button from 'components/common/MButton';
 import Logo from 'public/svg/logo1.svg';
 import { media } from 'styles/media';
 import styled from '@emotion/styled';
 
-const Header: React.FC = () => {
-  const handleLoginButtonClick = useCallback(() => {
-    alert('open login modal (WIP)');
-  }, []);
-
-  return (
-    <Container>
-      <MainLogo />
-      <ButtonsWrapper>
-        <Button type="text" size="large" onClick={handleLoginButtonClick}>
-          로그인
-        </Button>
-
-        <Link href="/join">
-          <a>
-            <Button type="primary" size="large">
-              회원가입
-            </Button>
-          </a>
-        </Link>
-      </ButtonsWrapper>
-    </Container>
-  );
-};
+const Header: React.FC = () => (
+  <Container>
+    <MainLogo />
+    <ButtonsWrapper>
+      <Link href="/login">
+        <a>
+          <Button type="text" size="large">
+            로그인
+          </Button>
+        </a>
+      </Link>
+      <Link href="/join">
+        <a>
+          <Button size="large">회원가입</Button>
+        </a>
+      </Link>
+    </ButtonsWrapper>
+  </Container>
+);
 
 export const Container = styled.header`
   width: 100%;
