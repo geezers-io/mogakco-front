@@ -3,6 +3,7 @@ import { Global, css } from '@emotion/react';
 import { Resets } from 'styles/global/Resets';
 import { FontFace } from 'styles/global/FontFace';
 import { media } from 'styles/media';
+import { theme } from 'styles/theme';
 
 export const globalCSS = css`
   *,
@@ -23,6 +24,7 @@ export const globalCSS = css`
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 
+    font-size: 14.5px;
     ${media.xs} {
       font-size: 14.5px;
     }
@@ -46,6 +48,7 @@ export const globalCSS = css`
   body {
     // TODO: 폰트 렌더링 최적화하기
     font-family: 'Noto Sans KR', 'Roboto', 'HelveticaNeue', 'Helvetica Neue', sans-serif;
+    color: ${theme.txt_default};
   }
 
   div#__next {

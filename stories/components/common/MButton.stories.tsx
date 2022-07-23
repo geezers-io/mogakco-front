@@ -138,21 +138,21 @@ const MButtonBase = (props: MButtonProps) => {
 };
 
 const TableContainer = styled.table`
-  border: 1px solid ${(p) => p.theme.palette.INK_30};
+  border: 1px solid ${({ theme }) => theme.palette.INK_30};
 
   th {
-    background: ${(p) => p.theme.palette.INK_10};
-    border: 1px solid ${(p) => p.theme.palette.INK_30};
+    background: ${({ theme }) => theme.palette.INK_10};
+    border: 1px solid ${({ theme }) => theme.palette.INK_30};
     vertical-align: middle;
   }
   td {
     vertical-align: middle;
-    border: 1px solid ${(p) => p.theme.palette.INK_30};
+    border: 1px solid ${({ theme }) => theme.palette.INK_30};
   }
   h1 {
     font-size: 20px;
     margin-top: 0;
-    border-bottom: 1px solid ${(p) => p.theme.palette.INK_30};
+    border-bottom: 1px solid ${({ theme }) => theme.palette.INK_30};
   }
   h2 {
     font-size: 16px;

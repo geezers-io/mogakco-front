@@ -7,7 +7,11 @@ import { useMe } from 'stores';
 import { Enums } from 'common';
 import Page = Enums.Page;
 
-const JoinForm: React.FC = () => {
+interface Props {
+  email?: string;
+}
+
+const JoinForm: React.FC<Props> = ({ email }) => {
   const updateMe = useMe((state) => state.updateMe);
   const router = useRouter();
 
@@ -42,7 +46,7 @@ const JoinForm: React.FC = () => {
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
         <label>
           email &nbsp;
-          <input name="email" type="email" required />
+          <input name="email" type="email" defaultValue={email} required />
         </label>
         <label>
           password &nbsp;
