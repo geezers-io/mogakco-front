@@ -1,4 +1,4 @@
-import React, { Ref, useCallback } from 'react';
+import React, { FormEventHandler, RefObject, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
@@ -12,18 +12,23 @@ interface Props {
   title: string;
   content: string;
   imgPath: string;
-  emailInputRef: Ref<InputRef>;
+  emailInputRef: RefObject<InputRef>;
 }
 
 const LeftBlock = ({ title, content, imgPath, emailInputRef }: Props) => {
   const router = useRouter();
 
-  const toJoin = useCallback(
-    async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const toJoin: FormEventHandler<HTMLFormElement> = useCallback(
+    async (e) => {
       e.preventDefault();
-      await router.push('/join');
+      await router.push({
+        pathname: '/join',
+        query: {
+          email: emailInputRef.current?.input?.value ?? '',
+        },
+      });
     },
-    [router]
+    [emailInputRef, router]
   );
 
   return (
@@ -32,7 +37,7 @@ const LeftBlock = ({ title, content, imgPath, emailInputRef }: Props) => {
         <section>
           <h1>{title}</h1>
           <p>{content}</p>
-          <EmailWrapper>
+          <Form onSubmit={toJoin} spellCheck="false">
             <EmailInput
               ref={emailInputRef}
               type="email"
@@ -40,8 +45,8 @@ const LeftBlock = ({ title, content, imgPath, emailInputRef }: Props) => {
               spellCheck="false"
               required
             />
-            <JoinButton onClick={toJoin}>회원가입</JoinButton>
-          </EmailWrapper>
+            <JoinButton htmlType="submit">회원가입</JoinButton>
+          </Form>
         </section>
       </ContentWrapper>
 
@@ -201,7 +206,7 @@ export const ImageWrapper = withAnimation(
   { origin: 'right' }
 );
 
-export const EmailWrapper = styled.div`
+export const Form = styled.form`
   width: 100%;
   max-width: 30rem;
   height: 2.66rem;
@@ -232,13 +237,10 @@ export const EmailInput = styled(Input)`
 export const JoinButton = styled(MButton)`
   width: 100%;
   height: 100%;
-  margin-top: 0.33rem;
   padding: 1.33rem 2.33rem;
 
   ${media.sm} {
     width: initial;
-    margin-top: initial;
-    margin-left: 0.66rem;
   }
 `;
 
