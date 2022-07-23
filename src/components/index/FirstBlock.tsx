@@ -2,11 +2,11 @@ import React, { FormEventHandler, RefObject, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { media } from 'styles';
 import MButton from 'components/common/MButton';
 import { withAnimation } from 'hoc';
 import { Input, InputRef } from 'antd';
+import { css } from '@emotion/react';
 
 interface Props {
   title: string;
@@ -78,6 +78,10 @@ const contentWrapperFontStyles = () => {
       p: string;
     }
   > = {
+    default: {
+      h1: '2rem',
+      p: '1.3rem',
+    },
     xs: {
       h1: '2.2rem',
       p: '1.33rem',
@@ -108,24 +112,27 @@ const contentWrapperFontStyles = () => {
     `.trim();
 
   return css`
+    h1 {
+      font-size: ${fontSizes['default'].h1};
+      font-weight: 700;
+      text-align: center;
+      word-break: keep-all;
+    }
     p {
-      margin-top: 1rem;
-      padding: initial;
+      font-size: ${fontSizes['default'].p};
+      font-weight: 400;
+      text-align: center;
+      word-break: keep-all;
+      line-height: 1.4;
     }
 
     ${media.sm} {
       h1 {
         white-space: nowrap;
       }
-      p {
-        margin-top: 1.33rem;
-      }
     }
 
     ${media.lg} {
-      padding-right: initial;
-      align-items: initial;
-
       h1 {
         text-align: initial;
       }
@@ -151,20 +158,9 @@ export const ContentWrapper = withAnimation(
     align-items: center;
     margin-top: 1rem;
 
-    h1 {
-      font-weight: 700;
-      font-size: 2.1rem;
-      text-align: center;
-      word-break: keep-all;
-    }
     p {
       margin-top: 1rem;
-      font-weight: 400;
-      font-size: 1.3rem;
-      text-align: center;
-      word-break: keep-all;
-      line-height: 1.4;
-      padding: 0 3rem;
+      padding: 0 1rem;
 
       ${media.sm} {
         margin-top: 1rem;
@@ -174,17 +170,15 @@ export const ContentWrapper = withAnimation(
         padding: 0 4rem;
       }
       ${media.lg} {
-        padding: 0 2.2rem;
-      }
-      ${media.xl} {
-        padding: 0 4rem;
+        padding: initial;
       }
     }
     ${media.lg} {
       width: 50%;
+      align-items: initial;
       order: 0;
       margin-top: initial;
-      padding-right: 4.5rem;
+      padding-right: initial;
     }
 
     ${contentWrapperFontStyles}
