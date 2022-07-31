@@ -6,11 +6,15 @@ import { useRouter } from 'next/router';
 import { useMe } from 'stores';
 import { Enums } from 'common';
 import Page = Enums.Page;
+import { Input } from '@chakra-ui/input';
+import { Text } from '@chakra-ui/react';
+import MButton from 'components/common/MButton';
 
 interface Props {
   email?: string;
 }
 
+// TODO: react-hook-from 적용
 const JoinForm: React.FC<Props> = ({ email }) => {
   const updateMe = useMe((state) => state.updateMe);
   const router = useRouter();
@@ -39,23 +43,27 @@ const JoinForm: React.FC<Props> = ({ email }) => {
 
   return (
     <div>
-      <h1>회원가입</h1>
+      <Text fontSize="xl">회원가입</Text>
 
       <br />
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-        <label>
-          email &nbsp;
-          <input name="email" type="email" defaultValue={email} required />
-        </label>
-        <label>
-          password &nbsp;
-          <input name="password" type="password" required />
-        </label>
+      <form
+        onSubmit={handleSubmit}
+        style={{ width: 400, display: 'flex', flexDirection: 'column' }}
+      >
+        <label htmlFor="email">email</label>
+        <Input id="email" name="email" type="email" defaultValue={email} size="sm" required />
 
         <br />
 
-        <button type="submit">ㄱㄱ</button>
+        <label htmlFor="password">password</label>
+        <Input id="password" name="password" type="password" size="sm" required />
+
+        <br />
+
+        <MButton htmlType="submit" size="regular" block>
+          Submit
+        </MButton>
       </form>
     </div>
   );
