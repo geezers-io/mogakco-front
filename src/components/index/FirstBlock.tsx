@@ -5,14 +5,14 @@ import styled from '@emotion/styled';
 import { media } from 'styles';
 import MButton from 'components/common/MButton';
 import { withAnimation } from 'hoc';
-import { Input, InputRef } from 'antd';
 import { css } from '@emotion/react';
+import { Input } from '@chakra-ui/input';
 
 interface Props {
   title: string;
   content: string;
   imgPath: string;
-  emailInputRef: RefObject<InputRef>;
+  emailInputRef: RefObject<HTMLInputElement>;
 }
 
 const LeftBlock = ({ title, content, imgPath, emailInputRef }: Props) => {
@@ -24,7 +24,7 @@ const LeftBlock = ({ title, content, imgPath, emailInputRef }: Props) => {
       await router.push({
         pathname: '/join',
         query: {
-          email: emailInputRef.current?.input?.value ?? '',
+          email: emailInputRef.current?.value ?? '',
         },
       });
     },
@@ -71,80 +71,43 @@ export const Container = styled.section`
 `;
 
 const contentWrapperFontStyles = () => {
-  const fontSizes: Record<
-    string,
-    {
-      h1: string;
-      p: string;
-    }
-  > = {
-    default: {
-      h1: '2rem',
-      p: '1.3rem',
-    },
-    xs: {
-      h1: '2.2rem',
-      p: '1.33rem',
-    },
-    sm: {
-      h1: '3rem',
-      p: '1.5rem',
-    },
-    md: {
-      h1: '3.2rem',
-      p: '1.66rem',
-    },
-    lg: {
-      h1: '2.4rem',
-      p: '1.5rem',
-    },
-  };
-  const mediaFontSizes = (screenSize: keyof typeof media) =>
-    `
-      ${media[screenSize]} {
-        h1 {
-          font-size: ${fontSizes[screenSize].h1};
-        }
-        p {
-          font-size: ${fontSizes[screenSize].p};
-        }
-      }
-    `.trim();
-
   return css`
     h1 {
-      font-size: ${fontSizes['default'].h1};
+      font-size: 2rem;
       font-weight: 700;
       text-align: center;
       word-break: keep-all;
+
+      ${media.sm} {
+        font-size: 3rem;
+        white-space: nowrap;
+      }
+      ${media.md} {
+        font-size: 3.2rem;
+      }
+      ${media.lg} {
+        font-size: 2.4rem;
+        text-align: initial;
+      }
     }
     p {
-      font-size: ${fontSizes['default'].p};
+      font-size: 1.3rem;
       font-weight: 400;
       text-align: center;
       word-break: keep-all;
       line-height: 1.4;
-    }
 
-    ${media.sm} {
-      h1 {
-        white-space: nowrap;
+      ${media.sm} {
+        font-size: 1.5rem;
       }
-    }
-
-    ${media.lg} {
-      h1 {
-        text-align: initial;
+      ${media.md} {
+        font-size: 1.66rem;
       }
-      p {
+      ${media.lg} {
+        font-size: 1.5rem;
         text-align: initial;
       }
     }
-
-    ${mediaFontSizes('xs')}
-    ${mediaFontSizes('sm')}
-    ${mediaFontSizes('md')}
-    ${mediaFontSizes('lg')}
   `;
 };
 
@@ -157,6 +120,14 @@ export const ContentWrapper = withAnimation(
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
+
+    ${media.lg} {
+      width: 50%;
+      align-items: initial;
+      order: 0;
+      margin-top: initial;
+      padding-right: initial;
+    }
 
     p {
       margin-top: 1rem;
@@ -172,13 +143,6 @@ export const ContentWrapper = withAnimation(
       ${media.lg} {
         padding: initial;
       }
-    }
-    ${media.lg} {
-      width: 50%;
-      align-items: initial;
-      order: 0;
-      margin-top: initial;
-      padding-right: initial;
     }
 
     ${contentWrapperFontStyles}

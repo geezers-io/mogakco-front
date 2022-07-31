@@ -53,7 +53,7 @@ const ContentWrapper = styled.section`
     font-size: 1.1rem;
     text-align: center;
     word-break: keep-all;
-    color: ${({ theme }) => theme.txt_default};
+    color: ${({ theme }) => theme.palette.txt_default};
   }
   p {
     margin-top: 1rem;

@@ -17,7 +17,7 @@ export const Container = styled.footer`
   justify-content: center;
   height: 15rem;
   margin-top: 5rem;
-  background: ${({ theme }) => theme.index_header_bg};
+  background: ${({ theme }) => theme.palette.index_header_bg};
 `;
 
 export const TempText = withAnimation<'h3'>(
@@ -26,7 +26,7 @@ export const TempText = withAnimation<'h3'>(
     font-weight: 700;
     font-size: 2rem;
     letter-spacing: 0.1rem;
-    color: ${({ theme }) => theme.txt_default};
+    color: ${({ theme }) => theme.palette.txt_default};
   `,
   { origin: 'bottom' }
 );

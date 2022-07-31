@@ -48,11 +48,11 @@ export const globalCSS = css`
   body {
     // TODO: 폰트 렌더링 최적화하기
     font-family: 'Noto Sans KR', 'Roboto', 'HelveticaNeue', 'Helvetica Neue', sans-serif;
-    color: ${theme.txt_default};
+    color: ${theme.palette.txt_default};
   }
 
   div#__next {
-    // FIXME: Temp
+    // FIXME: Temp styles for login, join page
     display: grid;
     place-content: center;
   }

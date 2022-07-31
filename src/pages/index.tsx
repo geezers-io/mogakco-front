@@ -9,10 +9,9 @@ import Footer from 'components/index/Footer';
 import ScrollTopButton from 'components/index/ScrollTopButton';
 import styled from '@emotion/styled';
 import { media } from 'styles';
-import { InputRef } from 'antd';
 
 const Landing = () => {
-  const emailInputRef = useRef<InputRef>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
 
   return (
     <>

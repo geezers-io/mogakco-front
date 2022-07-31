@@ -1,7 +1,9 @@
 import { ThemeProvider } from '@emotion/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { GlobalStyles, theme } from '../src/styles';
 
 export const parameters = {
+  chakra: { theme },
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {

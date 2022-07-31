@@ -6,7 +6,11 @@ import { showError } from 'utils/error';
 import { useMe } from 'stores';
 import { Enums } from 'common';
 import Page = Enums.Page;
+import { Text } from '@chakra-ui/react';
+import { Input } from '@chakra-ui/input';
+import MButton from 'components/common/MButton';
 
+// TODO: react-hook-from 적용
 const LoginForm: React.FC = () => {
   const updateMe = useMe((state) => state.updateMe);
   const router = useRouter();
@@ -22,8 +26,6 @@ const LoginForm: React.FC = () => {
           return acc;
         }, {} as LoginRequest);
 
-        console.log('body', body);
-
         const { me } = await UserService.login(body);
         updateMe(me);
 
@@ -37,23 +39,27 @@ const LoginForm: React.FC = () => {
 
   return (
     <div>
-      <h1>로그인</h1>
+      <Text fontSize="xl">로그인</Text>
 
       <br />
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-        <label>
-          email &nbsp;
-          <input name="email" type="email" required />
-        </label>
-        <label>
-          password &nbsp;
-          <input name="password" type="password" required />
-        </label>
+      <form
+        onSubmit={handleSubmit}
+        style={{ width: 400, display: 'flex', flexDirection: 'column' }}
+      >
+        <label htmlFor="email">email</label>
+        <Input id="email" name="email" type="email" size="sm" required />
 
         <br />
 
-        <button type="submit">ㄱㄱ</button>
+        <label htmlFor="password">password</label>
+        <Input id="password" name="password" type="password" size="sm" required />
+
+        <br />
+
+        <MButton htmlType="submit" size="regular" block>
+          Submit
+        </MButton>
       </form>
     </div>
   );

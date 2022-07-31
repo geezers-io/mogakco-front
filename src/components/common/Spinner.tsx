@@ -1,11 +1,12 @@
-import { LoadingOutlined } from '@ant-design/icons';
 import React, { forwardRef } from 'react';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
+import { AiOutlineLoading } from 'react-icons/ai';
+import { IconBaseProps } from 'react-icons';
 
-export interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface SpinnerProps extends IconBaseProps {
   size?: number;
-  forwardedRef?: React.ForwardedRef<SpinnerType>;
+  ref?: React.ForwardedRef<SpinnerType>;
 }
 export type SpinnerType = React.FC<SpinnerProps>;
 
@@ -23,13 +24,13 @@ const loadingAnimation = keyframes`
   }
 `;
 
-export const StyledSpinner = styled(LoadingOutlined)<SpinnerProps>`
+export const StyledSpinner = styled(AiOutlineLoading)<SpinnerProps>`
   font-size: ${(p) => p.size};
   animation: ${loadingAnimation} 2.2s cubic-bezier(0.645, 0.35, 0.755, 1) infinite;
 `;
 
 const ForwardedSpinner = forwardRef<SpinnerType, SpinnerProps>((props, ref) => (
-  <Spinner {...props} forwardedRef={ref} />
+  <Spinner {...props} ref={ref} />
 ));
 
 const name = Spinner.displayName || Spinner.name;

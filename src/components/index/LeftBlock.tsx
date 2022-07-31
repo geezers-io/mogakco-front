@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
-import { media } from 'styles';
 import { withAnimation } from 'hoc';
+import { media } from 'styles';
 
 interface Props {
   title: string;

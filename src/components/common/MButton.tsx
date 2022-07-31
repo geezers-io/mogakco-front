@@ -172,6 +172,7 @@ const getThemeType = (
   hover: boolean = false
 ) => 'btn_' + type + (disabled ? '_disabled' : hover ? '_hover' : active ? '_active' : '');
 
+type EmotionPaletteKey = keyof Theme['palette'];
 const buttonColorStyles = ({
   theme,
   containerType,
@@ -184,27 +185,27 @@ const buttonColorStyles = ({
   const disabledThemeType = getThemeType(containerType, active, true);
 
   return css`
-    background: ${theme[`${defaultThemeType}_bg` as keyof Theme]};
-    border: 1px solid ${theme[`${defaultThemeType}_border` as keyof Theme]};
-    color: ${theme[`${defaultThemeType}_color` as keyof Theme]};
+    background: ${theme.palette[`${defaultThemeType}_bg` as EmotionPaletteKey]};
+    border: 1px solid ${theme.palette[`${defaultThemeType}_border` as EmotionPaletteKey]};
+    color: ${theme.palette[`${defaultThemeType}_color` as EmotionPaletteKey]};
 
     ${!active &&
     css`
       &:hover {
-        background: ${theme[`${hoverThemeType}_bg` as keyof Theme]};
-        border: 1px solid ${theme[`${hoverThemeType}_border` as keyof Theme]};
-        color: ${theme[`${hoverThemeType}_color` as keyof Theme]};
+        background: ${theme.palette[`${hoverThemeType}_bg` as EmotionPaletteKey]};
+        border: 1px solid ${theme.palette[`${hoverThemeType}_border` as EmotionPaletteKey]};
+        color: ${theme.palette[`${hoverThemeType}_color` as EmotionPaletteKey]};
       }
     `}
     &:active {
-      background: ${theme[`${activeThemeType}_bg` as keyof Theme]};
-      border: 1px solid ${theme[`${activeThemeType}_border` as keyof Theme]};
-      color: ${theme[`${activeThemeType}_color` as keyof Theme]};
+      background: ${theme.palette[`${activeThemeType}_bg` as EmotionPaletteKey]};
+      border: 1px solid ${theme.palette[`${activeThemeType}_border` as EmotionPaletteKey]};
+      color: ${theme.palette[`${activeThemeType}_color` as EmotionPaletteKey]};
     }
     &:disabled {
-      background: ${theme[`${disabledThemeType}_bg` as keyof Theme]};
-      border: 1px solid ${theme[`${disabledThemeType}_border` as keyof Theme]};
-      color: ${theme[`${disabledThemeType}_color` as keyof Theme]};
+      background: ${theme.palette[`${disabledThemeType}_bg` as EmotionPaletteKey]};
+      border: 1px solid ${theme.palette[`${disabledThemeType}_border` as EmotionPaletteKey]};
+      color: ${theme.palette[`${disabledThemeType}_color` as EmotionPaletteKey]};
     }
   `;
 };
