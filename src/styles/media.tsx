@@ -7,6 +7,7 @@ export const breakpoint = {
   xl: 1200,
   xxl: 1600,
 } as const;
+
 export const media = {
   xs: `@media (min-width: ${breakpoint.xs}px)`,
   sm: `@media (min-width: ${breakpoint.sm}px)`,

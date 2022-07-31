@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ForwardedRef, forwardRef, useCallback } from 'react';
+import React, { ButtonHTMLAttributes, ForwardedRef, useCallback } from 'react';
 import type { CSSObject, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -44,14 +44,14 @@ interface IconProps {
 export type MButtonProps = ButtonProps &
   Omit<ButtonHTMLAttributes<HTMLElement>, 'type'> & {
     htmlType?: ButtonHTMLAttributes<HTMLElement>['type'];
-    forwardedRef?: ForwardedRef<MButtonType>;
+    forwardedRef?: ForwardedRef<HTMLButtonElement>;
   };
 export type MButtonType = React.FC<MButtonProps>;
 
 const MButton: MButtonType = ({
   children,
   onClick,
-  type = 'secondary',
+  type = 'primary',
   size = 'regular',
   icon = null,
   iconPlacement = 'left',
@@ -59,6 +59,7 @@ const MButton: MButtonType = ({
   active = false,
   disabled = false,
   loading = false,
+  forwardedRef,
   ...rest
 }) => {
   const isSquareSingleText = React.useMemo(
@@ -99,6 +100,7 @@ const MButton: MButtonType = ({
       active={active}
       disabled={disabled || loading}
       onClick={handleClick}
+      ref={forwardedRef}
       {...rest}
     >
       {(icon || loading) && iconPlacement === 'left' && IconNode}
@@ -186,16 +188,14 @@ const buttonColorStyles = ({
     border: 1px solid ${theme[`${defaultThemeType}_border` as keyof Theme]};
     color: ${theme[`${defaultThemeType}_color` as keyof Theme]};
 
-    ${
-      !active &&
-      css`
-        &:hover {
-          background: ${theme[`${hoverThemeType}_bg` as keyof Theme]};
-          border: 1px solid ${theme[`${hoverThemeType}_border` as keyof Theme]};
-          color: ${theme[`${hoverThemeType}_color` as keyof Theme]};
-        }
-      `
-    }
+    ${!active &&
+    css`
+      &:hover {
+        background: ${theme[`${hoverThemeType}_bg` as keyof Theme]};
+        border: 1px solid ${theme[`${hoverThemeType}_border` as keyof Theme]};
+        color: ${theme[`${hoverThemeType}_color` as keyof Theme]};
+      }
+    `}
     &:active {
       background: ${theme[`${activeThemeType}_bg` as keyof Theme]};
       border: 1px solid ${theme[`${activeThemeType}_border` as keyof Theme]};
@@ -206,7 +206,6 @@ const buttonColorStyles = ({
       border: 1px solid ${theme[`${disabledThemeType}_border` as keyof Theme]};
       color: ${theme[`${disabledThemeType}_color` as keyof Theme]};
     }
-  }
   `;
 };
 
@@ -264,7 +263,7 @@ const IconContainer = styled.span<IconProps>`
   ${iconSizeStyles}
 `;
 
-const ForwardedMButton = forwardRef<MButtonType, MButtonProps>((props, ref) => (
+const ForwardedMButton = React.forwardRef<HTMLButtonElement, MButtonProps>((props, ref) => (
   <MButton {...props} forwardedRef={ref} />
 ));
 

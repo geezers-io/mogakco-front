@@ -8,7 +8,7 @@ export async function middleware(req: NextRequest) {
   const url = req.nextUrl;
   console.log(`[Middleware]: Route ${url.pathname}`);
 
-  const publicRoutes: string[] = [Page.HOME, Page.JOIN];
+  const publicRoutes: string[] = [Page.HOME, Page.JOIN, 'animationTest'];
   if (!publicRoutes.includes(url.pathname)) {
     return NextResponse.next();
   }
