@@ -51,11 +51,11 @@ export const globalCSS = css`
     color: ${theme.txt_default};
   }
 
-  div#__next {
-    // FIXME: Temp
-    display: grid;
-    place-content: center;
-  }
+  //div#__next {
+  //  // FIXME: Temp styles for login, join page
+  //  display: grid;
+  //  place-content: center;
+  //}
 `;
 
 export const GlobalStyles = () => (
