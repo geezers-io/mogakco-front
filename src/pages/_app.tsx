@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@emotion/react';
 import { GlobalStyles, theme } from 'styles';
 import Head from 'next/head';
-import * as React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { LOGO_URL } from 'common';
 
 export const TITLE = '모여서 각자 코딩 - Mogakco';
@@ -37,8 +37,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="twitter:image:src" content={LOGO_URL} />
       </Head>
       <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Component {...pageProps} />
+        <ChakraProvider theme={theme}>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </ChakraProvider>
       </ThemeProvider>
     </>
   );

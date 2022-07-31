@@ -6,6 +6,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@chakra-ui/storybook-addon',
   ],
   framework: '@storybook/react',
   core: {
@@ -16,6 +17,12 @@ module.exports = {
   },
   webpackFinal: async (config) => {
     config.resolve.plugins = [new TsconfigPathsPlugin()];
+    config.module.rules.push({
+      test: /\.m?js$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+
     return config;
   },
 };

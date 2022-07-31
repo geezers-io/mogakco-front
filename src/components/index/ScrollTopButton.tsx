@@ -49,7 +49,7 @@ export const Wrapper = styled.div`
 
 export const ChevronUp = styled(FaChevronUp)`
   font-size: 1.66rem;
-  color: ${({ theme }) => theme.primary_color_yellow};
+  color: ${({ theme }) => theme.palette.brand_yellow};
 `;
 
 export default ScrollTop;

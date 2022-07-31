@@ -1,18 +1,11 @@
-// Follow Antd breakpoint https://ant.design/components/layout/#Layout.Sider
-export const breakpoint = {
-  xs: 480,
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
-  xxl: 1600,
-} as const;
+import { breakpoints } from 'styles/theme/breakpoints';
 
 export const media = {
-  xs: `@media (min-width: ${breakpoint.xs}px)`,
-  sm: `@media (min-width: ${breakpoint.sm}px)`,
-  md: `@media (min-width: ${breakpoint.md}px)`,
-  lg: `@media (min-width: ${breakpoint.lg}px)`,
-  xl: `@media (min-width: ${breakpoint.xl}px)`,
-  xxl: `@media (min-width: ${breakpoint.xxl}px)`,
+  base: `@media (min-width: ${breakpoints.base})`,
+  xs: `@media (min-width: ${breakpoints.sm})`,
+  sm: `@media (min-width: ${breakpoints.sm})`,
+  md: `@media (min-width: ${breakpoints.md})`,
+  lg: `@media (min-width: ${breakpoints.lg})`,
+  xl: `@media (min-width: ${breakpoints.xl})`,
+  xxl: `@media (min-width: ${breakpoints['2xl']})`,
 } as const;

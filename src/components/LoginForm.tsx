@@ -22,8 +22,6 @@ const LoginForm: React.FC = () => {
           return acc;
         }, {} as LoginRequest);
 
-        console.log('body', body);
-
         const { me } = await UserService.login(body);
         updateMe(me);
 

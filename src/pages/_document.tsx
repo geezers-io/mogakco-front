@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import * as React from 'react';
 import { LOGO_URL } from 'common';
+import { ColorModeScript } from '@chakra-ui/react';
+import { theme } from 'styles';
 
 export default class CustomDocument extends Document {
   public render(): JSX.Element {
@@ -16,6 +17,7 @@ export default class CustomDocument extends Document {
           <link rel="icon" type="image/png" sizes="192x192" href={LOGO_URL} />
         </Head>
         <body>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>
